@@ -4,28 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/SacramentMeetingPlanner/frontend/css/main.css">
-    <title>Sacrament Meeting Planner</title>
+    <title>Details</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href=" /SacramentMeetingPlanner/frontend/index.html">Home</a>
-                </li>
-                <li>
-                    <a href="/SacramentMeetingPlanner/frontend/planner.html">Sacrament Meeting Planner</a>
-                </li>
-                <li>
-                    <a href="/SacramentMeetingPlanner/frontend/speaker.html">Add Speakers</a>
-                </li>
-            </ul>
-        </nav>
-        <hr>
-    </header>
-    <main>
-        <h1>Details</h1>
+    <h1>Details</h1>
         <div id="formContainer">
             <form action="POST">   
                 <div id="flex1"> 
@@ -83,6 +65,18 @@
                 </button>
             </form>
         </div>
-    </main>
+        <div id="form">
+            <form action="POST">
+                <label for="name">Name</label>
+                <br>
+                <input type="text" id="name">
+                <br>
+                <label for="type">Type</label>
+                <br>
+                <input type="text" id="type">
+                <br>
+                <button type="submit">Create</button>
+            </form>
+        </div>
 </body>
 </html>
