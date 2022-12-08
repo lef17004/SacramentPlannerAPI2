@@ -2,7 +2,7 @@
 using PlannerApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookStoreApi.Controllers;
+namespace PlannerApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

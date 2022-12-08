@@ -19,7 +19,7 @@ public class SacramentProgram
     public int SacramentHymnNumber { get; set; }
     public string SacramentHymnName { get; set; } = null!;
 
-    public List<Dictionary<String, Object>> Speakers { get; set; } = null!;
+    public List<Dictionary<String, String>> Speakers { get; set; } = null!;
     public int ClosingHymnNumber { get; set; }
     public string ClosingHymnName { get; set; } = null!;
 
