@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/SacramentMeetingPlanner/frontend/css/main.css">
+    <title>Sacrament Meeting Planner</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href=" /SacramentMeetingPlanner/frontend/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/SacramentMeetingPlanner/frontend/planner.html">Sacrament Meeting Planner</a>
+                </li>
+                <li>
+                    <a href="/SacramentMeetingPlanner/frontend/speaker.html">Add Speakers</a>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <h1>Details</h1>
+        <div id="formContainer">
+            <form action="POST">   
+                <div id="flex1"> 
+                <label for="president">President</label>       
+                <br>
+                    <input type="text" id="president">
+                    <br>
+                <label for="Conducting">Conducting</label>
+                <br>
+                    <input type="text" id="conducting">
+                    <br>
+                <label for="openingHymn">Opening Hymn Name</label>
+                <br>
+                    <input type="text" id="openingHymn">
+                    <br>
+                <label for="openingHymnNumber">Opening Hymn Number</label>
+                <br>
+                    <input type="text" id="openingHymnNumber">
+                    <br>
+                <label for="Invocation">Invocation</label>
+                <br>
+                    <input type="text" id="Invocation">
+                    <br>
+                <label for="sacramentHymn">Sacrament Hymn Name</label>
+                <br>
+                    <input type="text" id="sacramentHymn">
+                    <br>
+
+                <label for="president">President</label>
+     </div>
+            <div id="flex2">
+                <label for="sacramentHymnNumber">Sacrament Hymn Number</label>
+                <br>
+                    <input type="text" id="sacramentHymnNumber">
+                    <br>
+                <label for="closingHymn">Closing Hymn</label>
+                <br>
+                    <input type="text" id="closingHymn">
+                    <br>
+                <label for="closingHymnNumber">Closing Hymn Number</label>
+                <br>
+                    <input type="text" id="closingHymnNumber">
+                    <br>
+                <label for="benediction">Benediction</label>
+                <br>
+                    <input type="text" id="benediction">
+                    <br>
+                <label for="dismissalSong">Dismissal Song</label>
+                <br>
+                    <input type="text" id="dismissalSong">
+                <br>
+            </div>
+                <button type="submit">
+                    Create
+                </button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
