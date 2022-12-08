@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Hello Michael</p>
+</body>
+<script>
+    const uri = "api/Program";
+    fetch(uri)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+</script>
+</html>
