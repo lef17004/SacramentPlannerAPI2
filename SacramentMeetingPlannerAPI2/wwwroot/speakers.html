@@ -17,19 +17,21 @@
                 </li>
             </ul>
         </div>
-                <div>
-                   programs.forEach(program => {
-                    <div>
-                        <div class="card-body">
-                            <h4 class="card-title">program.stake</h4>
-                            <div class="card-subtitle">program.date.toLocaleDateString()</div>
-                            <div class="card-text mb-2">
-                               program.details
-                            </div>
-                        </div>
-                    </div>
-                  })
-                </div>
+        <div>
+            <div id="form">
+                <form action="POST">
+                    <label for="name">Name</label>
+                    <br>
+                    <input type="text" id="name">
+                    <br>
+                    <label for="type">Type</label>
+                    <br>
+                    <input type="text" id="type">
+                    <br>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </div>
     </main>
 </body>
 <script>

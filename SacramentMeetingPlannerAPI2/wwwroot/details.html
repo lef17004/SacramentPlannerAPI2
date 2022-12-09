@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sacrament Meeting Planner</title>
+</head>
+<body>
+    <main>
+        <h1>Sacrament Meeting Planner</h1>
+        <div>
+            <ul>
+                <li>
+                    <a href="">Enter Details</a>
+                </li>
+                <li>
+                    <a>Enter Speakers</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1>Details</h1>
+            <div id="formContainer">
+                <form action="POST">
+                        <label for="president">President</label>
+                        <br>
+                        <input type="text" id="president">
+                        <br>
+                        <label for="Conducting">Conducting</label>
+                        <br>
+                        <input type="text" id="conducting">
+                        <br>
+                        <label for="openingHymn">Opening Hymn Name</label>
+                        <br>
+                        <input type="text" id="openingHymn">
+                        <br>
+                        <label for="openingHymnNumber">Opening Hymn Number</label>
+                        <br>
+                        <input type="text" id="openingHymnNumber">
+                        <br>
+                        <label for="Invocation">Invocation</label>
+                        <br>
+                        <input type="text" id="Invocation">
+                        <br>
+                        <label for="sacramentHymn">Sacrament Hymn Name</label>
+                        <br>
+                        <input type="text" id="sacramentHymn">
+                        <br>
+                        <label for="sacramentHymnNumber">Sacrament Hymn Number</label>
+                        <br>
+                        <input type="text" id="sacramentHymnNumber">
+                        <br>
+                        <label for="closingHymn">Closing Hymn</label>
+                        <br>
+                        <input type="text" id="closingHymn">
+                        <br>
+                        <label for="closingHymnNumber">Closing Hymn Number</label>
+                        <br>
+                        <input type="text" id="closingHymnNumber">
+                        <br>
+                        <label for="benediction">Benediction</label>
+                        <br>
+                        <input type="text" id="benediction">
+                        <br>
+                        <label for="dismissalSong">Dismissal Song</label>
+                        <br>
+                        <input type="text" id="dismissalSong">
+                        <br>
+                    <a href="/index.html">Cancel</a>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    const uri = "api/Program";
+    fetch(uri)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+</script>
+</html>
