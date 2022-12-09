@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Sacrament Meeting Planner</title>
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
     <main>
@@ -10,26 +11,22 @@
         <div class="nav">
             <ul>
                 <li>
-                    <a href="">Enter Details</a>
+                    <a href="/details.html">Enter Details</a>
                 </li>
                 <li>
-                    <a>Enter Speakers</a>
+                    <a href="/speakers.html">Enter Speakers</a>
                 </li>
             </ul>
         </div>
-                <div>
-                   programs.forEach(program => {
-                    <div>
-                        <div class="card-body">
-                            <h4 class="card-title">program.stake</h4>
-                            <div class="card-subtitle">program.date.toLocaleDateString()</div>
-                            <div class="card-text mb-2">
-                               program.details
-                            </div>
-                        </div>
-                    </div>
-                  })
+        <br />
+            <div class="grid">
+                <div class="card">
+                    
+                    <h3 class="head">Ward/Stake Name</h3>
+                    <p class="subheader">Date</p>
+                    
                 </div>
+            </div>
     </main>
 </body>
 <script>
