@@ -7,7 +7,7 @@
 <body>
     <main>
         <h1>Sacrament Meeting Planner</h1>
-        <div>
+        <div class="nav">
             <ul>
                 <li>
                     <a href="">Enter Details</a>
@@ -19,7 +19,7 @@
         </div>
         <div>
             <div id="form">
-                <form action="POST">
+                <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
                     <label for="name">Name</label>
                     <br>
                     <input type="text" id="name">
