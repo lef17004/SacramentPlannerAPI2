@@ -19,7 +19,7 @@
             </ul>
         </div>
         <br />
-            <div class="grid">
+            <div class="grid" id="card-display">
                 <div class="card">
                     
                     <h3 class="head">Ward/Stake Name</h3>
@@ -30,9 +30,38 @@
     </main>
 </body>
 <script>
-    const uri = "api/Program";
-    fetch(uri)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+    function loadIndexPage() {
+        const url = "api/Program";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => displayProgramHistory(data))
+            .catch(error => {
+                // handle the error
+            });
+        
+
+
+    }
+
+    function displayProgramHistory(data) {
+        console.log(data);
+        let displayGrid = document.getElementById('card-display');
+        let items = "";
+        for (const program of data) {
+            let html = `
+                <div class="card">
+                    
+                    <h3 class="head">River Creek Ward</h3>
+                    <p class="subheader">${program.date}</p>
+                    
+                </div>`;
+
+            items += html;
+        }
+        displayGrid.innerHTML = items;
+    }
+
+    loadIndexPage();
+    
 </script>
 </html>
