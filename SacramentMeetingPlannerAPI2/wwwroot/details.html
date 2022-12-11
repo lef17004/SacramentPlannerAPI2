@@ -21,62 +21,213 @@
         <div>
             <h1>Details</h1>
             <div id="formContainer">
-                <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-                        <label for="president">President</label>
-                        <br>
-                        <input type="text" id="president">
-                        <br>
-                        <label for="Conducting">Conducting</label>
-                        <br>
-                        <input type="text" id="conducting">
-                        <br>
-                        <label for="openingHymn">Opening Hymn Name</label>
-                        <br>
-                        <input type="text" id="openingHymn">
-                        <br>
-                        <label for="openingHymnNumber">Opening Hymn Number</label>
-                        <br>
-                        <input type="text" id="openingHymnNumber">
-                        <br>
-                        <label for="Invocation">Invocation</label>
-                        <br>
-                        <input type="text" id="Invocation">
-                        <br>
-                        <label for="sacramentHymn">Sacrament Hymn Name</label>
-                        <br>
-                        <input type="text" id="sacramentHymn">
-                        <br>
-                        <label for="sacramentHymnNumber">Sacrament Hymn Number</label>
-                        <br>
-                        <input type="text" id="sacramentHymnNumber">
-                        <br>
-                        <label for="closingHymn">Closing Hymn</label>
-                        <br>
-                        <input type="text" id="closingHymn">
-                        <br>
-                        <label for="closingHymnNumber">Closing Hymn Number</label>
-                        <br>
-                        <input type="text" id="closingHymnNumber">
-                        <br>
-                        <label for="benediction">Benediction</label>
-                        <br>
-                        <input type="text" id="benediction">
-                        <br>
-                        <label for="dismissalSong">Dismissal Song</label>
-                        <br>
-                        <input type="text" id="dismissalSong">
-                        <br>
-                    <a href="/index.html">Cancel</a>
-                    <button type="submit">Create</button>
+                <form id="form" action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                    <input type="date" id="date" />
+                    <br />
+                    <label for="president">President</label>
+                    <br>
+                    <input type="text" id="president">
+                    <br>
+                    <label for="Conducting">Conducting</label>
+                    <br>
+                    <input type="text" id="conducting">
+                    <br>
+                    <label for="openingHymn">Opening Hymn Name</label>
+                    <br>
+                    <input type="text" id="openingHymn">
+                    <br>
+                    <label for="openingHymnNumber">Opening Hymn Number</label>
+                    <br>
+                    <input type="text" id="openingHymnNumber">
+                    <br>
+                    <label for="Invocation">Invocation</label>
+                    <br>
+                    <input type="text" id="Invocation">
+                    <br>
+                    <label for="sacramentHymn">Sacrament Hymn Name</label>
+                    <br>
+                    <input type="text" id="sacramentHymn">
+                    <br>
+                    <label for="sacramentHymnNumber">Sacrament Hymn Number</label>
+                    <br>
+                    <input type="text" id="sacramentHymnNumber">
+                    <br>
+                    <label for="closingHymn">Closing Hymn</label>
+                    <br>
+                    <input type="text" id="closingHymn">
+                    <br>
+                    <label for="closingHymnNumber">Closing Hymn Number</label>
+                    <br>
+                    <input type="text" id="closingHymnNumber">
+                    <br>
+                    <label for="benediction">Benediction</label>
+                    <br>
+                    <input type="text" id="benediction">
+                    <br>
+                    <label for="dismissalSong">Dismissal Song</label>
+                    <br>
+                    <input type="text" id="dismissalSong">
+                    <br>
+                    <label for="dismissalSongNumber">Dismissal Song Number</label>
+                    <br>
+                    <input type="text" id="dismissalSongNumber">
+                    <br>
+
+                    <label>Speaker Types and Names</label>
+                    <br>
+                    <label for="Speaker1Type" id="speaker1TypeLabel">Type:</label>
+
+                    <input type="text" id="speaker1Type" />
+
+                    <label for="Speaker1Name" id="speaker1NameLabel">Name: </label>
+                    <select id="speaker1Name"></select>
+                    <br>
+
+
+
                 </form>
+                <button onclick="addSpeaker()">Add Speaker</button>
+                <br />
+                <a href="/index.html">Cancel</a>
+                <button type="submit" onclick="createNewProgrm()">Create</button>
             </div>
         </div>
     </main>
 </body>
 <script>
-    const uri = "api/Program";
-    fetch(uri)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+    var names = [];
+    var speakerCount = 1;
+    function addSpeaker() {
+        speakerCount++;
+        let form = document.getElementById("form");
+        form.innerHTML += `
+             <label for="Speaker${speakerCount}Type" id="speaker${speakerCount}TypeLabel">Type:</label>
+                        
+             <input type="text" id="speaker${speakerCount}Type" />
+
+             <label for="Speaker1Name" id="speaker${speakerCount}NameLabel">Name: </label>
+             <select id="speaker${speakerCount}Name">${getNameOptionHTML(names)}</select>
+            <br>`;
+    }
+
+    function getNameOptionHTML(data) {
+        let text = ``;
+        for (const name of data) {
+            text += `<option>${name.name}</option>`;
+        }
+        return text;
+    }
+
+    function getNames() {
+        const uri = "api/SpeakerName";
+        let namesHTML = "";
+        fetch(uri)
+            .then((response) => response.json())
+            .then((data) => {
+                return data;
+            });
+    }
+
+    function createNewProgrm() {
+        let date = { 'value': document.getElementById("date").value, "name": "Date" };
+        let presiding = { 'value': document.getElementById("president").value, "name": "Presiding" };
+        let conducting = { 'value': document.getElementById("conducting").value, "name": "Conducting" };
+        let ohn = { 'value': document.getElementById("openingHymn").value, "name": "Opening Hymn Name" };
+        let ohNumber = { 'value': parseInt(document.getElementById("openingHymnNumber").value), "name": "Opening Hymn Number" };
+        let openingPrayer = { 'value': document.getElementById("Invocation").value, "name": "Opening Prayer" };
+        let sh = { 'value': document.getElementById("sacramentHymn").value, "name": "Sacrament Hymn Name" };
+        let shn = { 'value': parseInt(document.getElementById("sacramentHymnNumber").value), "name": "Sacrament Hymn Number" };
+        let ch = { 'value': document.getElementById("closingHymn").value, "name": "Closing Hymn Name" };
+        let chn = { 'value': parseInt(document.getElementById("closingHymnNumber").value), "name": "Closing Hymn Number" };
+        let closingPrayer = { 'value': document.getElementById("benediction").value, "name": "Closing Prayer" };
+        let dhn = { 'value': parseInt(document.getElementById("dismissalSongNumber").value), "name": "Dismissal Hymn Number" };
+        let dh = { 'value': document.getElementById("dismissalSong").value, "name": "Dismissal Hymn Song" };
+
+        let validationList = [date, presiding, conducting, ohn, ohn, openingPrayer, sh, shn, ch, chn, closingPrayer, dh, dhn];
+
+        let speakerList = [];
+        for (let i = 1; i <= speakerCount; i++) {
+            let speakerName = { 'value': document.getElementById(`speaker${i}Name`).value, "name": `Speaker ${i} Name`};
+            let speakerType = { 'value': document.getElementById(`speaker${i}Type`).value, "name": `Speaker ${i} Type` };
+            validationList.push(speakerName);
+            validationList.push(speakerType);
+            speakerList.push({"Name": speakerName.value, "Type": speakerType.value});
+        }
+
+        let invalid = "Please Check These For Errors:\n";
+        let error = false;
+        for (const item of validationList) {
+            if (item.value == "" || item.value == undefined) {
+                invalid += (item.name + ": " + item.value + "\n");
+                error = true;
+            }
+        }
+
+        if (error) {
+            alert(invalid);
+            return;
+        }
+        let dateObject = new Date(date.value);
+        let dateFormated = dateObject.toLocaleDateString();
+
+        let body = JSON.stringify({
+            date: dateFormated,
+            presiding: presiding.value,
+            conducting: conducting.value,
+            openingHymnNumber: ohNumber.value,
+            openingHymnName: ohn.value,
+            openingPrayer: openingPrayer.value,
+            sacramentHymnNumber: shn.value,
+            sacramentHymnName: sh.value,
+            speakers: speakerList,
+            closingHymnNumber: chn.value,
+            closingHymnName: ch.value,
+            closingPrayer: closingPrayer.value,
+            dismissalHymnNumber: dhn.value,
+            dismissalHymnName: dh.value
+        });
+
+        console.log(body);
+
+        fetch('api/Program/', {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: body,
+
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(() => {
+            alert("Done");
+        });
+
+    }
+
+    function loadPage() {
+        const uri = "api/SpeakerName";
+        let namesHTML = "";
+        fetch(uri)
+            .then((response) => response.json())
+            .then((data) => {
+                let dropDown = document.getElementById("speaker1Name");
+                console.log(data);
+                names = data;
+                for (const name of data) {
+                    console.log(name.name);
+                    dropDown.innerHTML += `
+                         <option>${name.name}</option>
+                    `;
+                }
+            });
+        
+       
+        
+    }
+
+    loadPage();
 </script>
 </html>

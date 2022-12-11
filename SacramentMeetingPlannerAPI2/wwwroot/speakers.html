@@ -20,25 +20,60 @@
         <br />
         <div>
             <div id="form">
-                <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+             
                     <label for="name">Name</label>
                     <br>
                     <input type="text" id="name">
                     <br>
-                    <label for="type">Type</label>
-                    <br>
-                    <input type="text" id="type">
-                    <br>
-                    <button type="submit">Create</button>
-                </form>
+                    <button onclick="addName()">Create</button>
+          
+            </div>
+            <h3>Names Already In Database</h3>
+            <div id="names">
+
             </div>
         </div>
     </main>
 </body>
 <script>
-    const uri = "api/Program";
-    fetch(uri)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+
+    function displayAllNames() {
+        const uri = "api/SpeakerName";
+        let namesHTML = "";
+        fetch(uri)
+            .then((response) => response.json())
+            .then((data) => {
+                for (const name of data) {
+                    namesHTML += `<p>${name.name}</p>`;
+                }
+                document.getElementById("names").innerHTML = namesHTML;
+            });
+    }
+
+    function addName() {
+        let nameDiv = document.getElementById("name");
+        let name = nameDiv.value;
+        if (name == "") { return; }
+        fetch('api/SpeakerName/', {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify({
+                name: name
+            }),
+
+            // Adding headers to the request
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(() =>{
+            nameDiv.value = "";
+            displayAllNames();
+        });
+    }
+
+    displayAllNames();
 </script>
 </html>

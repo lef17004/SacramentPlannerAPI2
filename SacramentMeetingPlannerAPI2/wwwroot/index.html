@@ -53,7 +53,15 @@
                     
                     <h3 class="head">River Creek Ward</h3>
                     <p class="subheader">${program.date}</p>
-                    
+                    <p class="subheader">Presiding: ${program.presiding}</p>
+                    <p class="subheader">Conducting: ${program.conducting}</p>
+                    <p class="subheader">Opening Hymn: ${program.openingHymnNumber} ${program.openingHymnName}</p>
+                    <p class="subheader">Opening Prayer: ${program.openingPrayer}</p>
+                    <p class="subheader">Sacrament Hymn: ${program.sacramentHymnNumber} ${program.sacramentHymnName}</p>
+                    <p class="subheader">Opening Prayer: ${program.openingPrayer}</p>
+                    ${getSpeakerText(program.speakers)}
+                     <p class="subheader">Closing Hymn: ${program.closingHymnNumber} ${program.closingHymnName}</p>
+                     <p class="subheader">Dismissal Hymn: ${program.dismissalHymnNumber} ${program.dismissalHymnName}</p>
                 </div>`;
 
             items += html;
@@ -61,6 +69,14 @@
         displayGrid.innerHTML = items;
     }
 
+    function getSpeakerText(speakers) {
+        let html = ``;
+        for (const speaker of speakers) {
+            html += `<p class="subheader">${speaker.Type}: ${speaker.Name}</p>`;
+
+        }
+        return html;
+    }
     loadIndexPage();
     
 </script>
